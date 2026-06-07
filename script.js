@@ -45,6 +45,35 @@ buttons.forEach(button => {
                     updateDisplay(equation);
                 }
                 break;
-        }
-    })
-})
+            
+            case '()':
+                const openParentCount = (equation.match(/\(/g) || []).length;
+                const closeParentCount = (equation.match(/\(/g) || []).length;
+            
+                if (openParentCount > closeParentCount) {
+                    equation += ')';
+                }
+
+                else {
+                    equation += '(';
+                }
+
+                updateDisplay(equation);
+                break;
+
+            default:
+                if (equation === '0' && value !== '.') {
+                    equation = value;
+                } 
+                else {
+                    equation += value;
+                }   
+                updateDisplay(equation);
+                break;
+        }   
+    });
+});
+
+function updateDisplay(value) {
+    display.innerText = value || '0';
+}
