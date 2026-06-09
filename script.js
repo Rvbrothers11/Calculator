@@ -69,7 +69,7 @@ let equation = '';
 
 calcButtons.forEach(button => {
     button.addEventListener('click', (e) => {
-        const value = e.target.closest('button').value || e.target.closest.('button').innerText;
+        const value = e.target.closest('button').value || e.target.closest('button').innerText;
 
         switch (value) {
             case 'all-clear':
