@@ -34,6 +34,36 @@ navCalc.addEventListener('click', (e) => {
     showView(viewCalc);
 })
 
+navHistory.addEventListener('click', (e) => {
+    e.preventDefault();
+    showView(viewHistory);
+})
+
+navConvertor.addEventListener('click', (e) => {
+    e.preventDefault();
+    showView(viewConvertor);
+})
+
+showView(viewCalc);
+
+let historyArray = [];
+const historyList = document.getElementById('history-list');
+
+function addToHistory(calcString, result) {
+    const prettyString = calcString.replace(/\*/g, 'x').replace(/\//g, '+');
+    const entry = `${prettyString} = ${result}`;
+
+    historyArray.unshift(entry);
+
+    const li = document.createElement('li');
+    li.innerText = entry;
+    historyList.prepend(li);
+}
+
+document.getElementById('clear-history').addEventListener('click', () => {
+    historyArray = [];
+    historyList.innerHTML = '';
+});
 
 
 
