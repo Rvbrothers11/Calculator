@@ -78,3 +78,22 @@ button:hover {
 .equal-sign:hover {
     background-color: #e08300;
 }
+
+.top-nav {
+    display: flex;
+    gap: 10px;
+    padding: 10px 20px;
+    background-color: #111;
+    border-bottom: 1px solid #333;
+}
+
+.top-nav button {
+    background: none;
+    padding: 10px;
+    font-size: 1.2 rem;
+}
+
+.top-nav button:hover {
+    background-color: #333;
+    border-radius: 5px;
+}
