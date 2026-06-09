@@ -3,44 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Calculator </title>
+    <title>Advanced Calculator </title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="calculator app-container">
+        <div class="top-nav">
+            <button id="nav-history"></button>
+            <button id="nav-convertor"></button>
+            <button id="nav-calc"></button>
+            <div class="spacer"></div>
+            <button id="button-backspace" class="backspace-button">⌫</button>
+        </div>
 
-    <div class="calculator">
-        <div class="calculator-screen" id="display">0</div>
+        <div id="view-calc" class="view active">
+            <div class="calculator-screen" id="display">0</div>
+            <div class="calculator-keys">
+                <button class="all-clear" value="all-clear">AC</button>
+                <button class="brackets" value="()">()</button>
+                <button class="percentage" value="%">%</button>
+                <button class="operator" value="/">&divide;</button>
 
-        <div class="calculator-keys">
-            
-            <button class="all-clear" value="all-clear">AC</button>
-            <button class="brackets" value="()">()</button>
-            <button class="percentage" value="%">%</button>
-            <button class="operator" value="/">&divide;</button>
+                <button value="7">7</button>
+                <button value="8">8</button>
+                <button value="9">9</button>
+                <button class="operator" value="*">&times;</button>
+                
+                <button value="4">4</button>
+                <button value="5">5</button>
+                <button value="6">6</button>
+                <button class="operator" value="-">-</button>
 
-            <button value="7">7</button>
-            <button value="8">8</button>
-            <button value="9">9</button>
-            <button class="operator" value="*">&times;</button>
-            
-            <button value="4">4</button>
-            <button value="5">5</button>
-            <button value="6">6</button>
-            <button class="operator" value="-">-</button>
+                <button value="1">1</button>
+                <button value="2">2</button>
+                <button value="3">3</button>
+                <button class="operator" value="+">+</button>
 
-            <button value="1">1</button>
-            <button value="2">2</button>
-            <button value="3">3</button>
-            <button class="operator" value="+">+</button>
+                <button class="sign-change" value="+/-">+/-</button>
+                <button value="0">0</button>
+                <button class="decimal" value=".">.</button>
+                <button class="equal-sign" value="=">=</button>
+            </div>
+        </div>
 
-            <button class="sign-change" value="+/-">+/-</button>
-            <button value="0">0</button>
-            <button class="decimal" value=".">.</button>
-            <button class="equal-sign" value="=">=</button>
+        <div id="view-history" class="view hidden">
+            <div class="view-header">History</div>
+            <ul id="history-list"></ul>
+            <button id="clear-history">Clear History</button>
+        </div>
+
+        <div id="view-convertor" class="view hidden">
+            <div class="view-header">Convertor</div>
+
+            <select id="convertor-category">
+                <option value="length">Length</option>
+                <option value="temperature">Temperature</option>
+            </select>
+
+            <div class="convertor-inputs">
+                <input type="number" id="convertor-input" value="1">
+                <select id="convertor-from"></select>
+                <div class="equals-text">=</div>
+                <input type="number" id="convertor-output" readonly>
+                <select id="convertor-to"></select>
+            </div>
         </div>
     </div>
 
     <script src="script.js"></script>
-
 </body>
 </html>
