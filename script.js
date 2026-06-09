@@ -65,35 +65,14 @@ document.getElementById('clear-history').addEventListener('click', () => {
     historyList.innerHTML = '';
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 let equation = '';
 
 calcButtons.forEach(button => {
     button.addEventListener('click', (e) => {
-        const value = e.target.innerText;
+        const value = e.target.closest('button').value || e.target.closest.('button').innerText;
 
         switch (value) {
+            case 'all-clear':
             case 'AC':
                 equation = '';
                 updateDisplay('0');
@@ -106,8 +85,9 @@ calcButtons.forEach(button => {
                         .replace(/÷/g, '/');
                     
                     mathExpression = mathExpression.replace(/%/g, '/100');
-
                     const result = eval(mathExpression);
+
+                    addToHistory(equation, result);
 
                     equation = result.toString();
                     updateDisplay(equation);
