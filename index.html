@@ -23,6 +23,13 @@
                     <path d="M6 15v-3"/><rect x="2" y="12" width="20" height="8" rx="2"/>
                 </svg>
             </button>
+            <button id="nav-calc">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calculator-icon lucide-calculator"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/>
+                    <path d="M8 10h.01"/><path d="M12 14h.01"/>
+                    <path d="M8 14h.01"/><path d="M12 18h.01"/>
+                    <path d="M8 18h.01"/>
+                </svg>
+            </button>
             <div class="spacer"></div>
             <button id="button-backspace" class="backspace-button">⌫</button>
         </div>
@@ -65,11 +72,17 @@
 
         <div id="view-convertor" class="view hidden">
             <div class="view-header">Convertor</div>
-
-            <select id="convertor-category">
-                <option value="length">Length</option>
-                <option value="temperature">Temperature</option>
-            </select>
+            
+            <div class="category-slider" id="category-slider">
+                <button class="category-btn active" data-category="length">Length</button>
+                <button class="category-btn" data-category="temperature">Temperature</button>
+                <button class="category-btn" data-category="area">Area</button>
+                <button class="category-btn" data-category="volume">Volume</button>
+                <button class="category-btn" data-category="mass">Mass</button>
+                <button class="category-btn" data-category="data">Data</button>
+                <button class="category-btn" data-category="speed">Speed</button>
+                <button class="category-btn" data-category="time">Time</button>
+            </div>
 
             <div class="convertor-inputs">
                 <input type="number" id="convertor-input" value="1">

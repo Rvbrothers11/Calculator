@@ -156,6 +156,7 @@ button:hover {
 
 #view-convertor select, #view-convertor input {
     width: 100%;
+    display: none;
     padding: 15px;
     background: #333;
     color: white;
