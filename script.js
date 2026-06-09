@@ -1,9 +1,43 @@
 const display = document.getElementById("display");
-const buttons = document.querySelectorAll("button");
+const calcButtons = document.querySelectorAll(".calculator-keys button");
+const viewCalc = document.getElementById("view-calc");
+const viewHistory = document.getElementById("view-history");
+const viewConvertor = document.getElementById("view-convertor");
+const navCalc = document.getElementById("nav-calc");
+const navHistory = document.getElementById("nav-history");
+const navConvertor = document.getElementById("nav-convertor");
+const backspaceButton = document.getElementById("button-backspace");
+
+navCalc.style.display = 'none';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 let equation = '';
 
-buttons.forEach(button => {
+calcButtons.forEach(button => {
     button.addEventListener('click', (e) => {
         const value = e.target.innerText;
 
