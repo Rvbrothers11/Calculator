@@ -10,7 +10,29 @@ const backspaceButton = document.getElementById("button-backspace");
 
 navCalc.style.display = 'none';
 
+function showView(viewToShow) {
+    viewCalc.classList.remove('active');
+    viewHistory.classList.remove('active');
+    viewConvertor.classList.remove('active');
 
+    viewCalc.style.display = 'none';
+    viewHistory.style.display = 'none';
+    viewConvertor.style.display = 'none';
+
+    viewToShow.style.display = 'flex';
+    viewToShow.classList.add('active');
+
+    if (viewToShow === viewCalc) {
+        navCalc.style.display = 'none';
+    } else {
+        navCalc.style.display = 'block';
+    }
+}
+
+navCalc.addEventListener('click', (e) => { 
+    e.preventDefault(); 
+    showView(viewCalc);
+})
 
 
 
