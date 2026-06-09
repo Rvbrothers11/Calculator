@@ -109,7 +109,7 @@ button:hover {
 .view {
     display: none;
     flex-direction: column;
-    height: 490px;
+    height: 365px;
 }
 
 .view.active {
