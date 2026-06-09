@@ -48,12 +48,11 @@ buttons.forEach(button => {
             
             case '()':
                 const openParentCount = (equation.match(/\(/g) || []).length;
-                const closeParentCount = (equation.match(/\(/g) || []).length;
+                const closeParentCount = (equation.match(/\)/g) || []).length;
             
                 if (openParentCount > closeParentCount) {
                     equation += ')';
                 }
-
                 else {
                     equation += '(';
                 }
