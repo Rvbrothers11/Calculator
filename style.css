@@ -156,7 +156,6 @@ button:hover {
 
 #view-convertor select, #view-convertor input {
     width: 100%;
-    display: none;
     padding: 15px;
     background: #333;
     color: white;
@@ -170,4 +169,34 @@ button:hover {
     text-align: center;
     font-size: 2rem;
     margin: 10px 0;
+}
+.category-slider {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding: 0px 20px 15px 20px;
+
+    scrollbar-width: thin;
+    -ms-overflow-style: none;
+}
+
+.category-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.category-btn {
+    background-color: #333;
+    color: #a5a5a5;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 1rem;
+    white-space: nowrap;
+    cursor: pointer;
+    border: 1px solid #444;
+}
+
+.category-btn.active {
+    background-color: #ff9500;
+    color: white;
+    border-color: #ff9500;
 }
