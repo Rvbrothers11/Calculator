@@ -139,6 +139,18 @@ calcButtons.forEach(button => {
     });
 });
 
+backspaceButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (equation.length > 1) {
+        equation = equation.slice(0, -1);
+    } else {
+        equation = '';
+        updateDisplay('0');
+        return;
+    }
+    updateDisplay(equation);
+});
+
 function updateDisplay(value) {
     display.innerText = value || '0';
 }
