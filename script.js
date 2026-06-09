@@ -154,3 +154,15 @@ backspaceButton.addEventListener('click', (e) => {
 function updateDisplay(value) {
     display.innerText = value || '0';
 }
+
+const fromSelect = document.getElementById('convertor-from');
+const toSelect = document.getElementById('convertor-to');
+const inputField = document.getElementById('convertor-input');
+const outputField = document.getElementById('convertor-output');
+const categoryButtons = document.querySelectorAll('.category-button')
+
+let currentCategory = 'length';
+
+const conversionData = {
+
+};
