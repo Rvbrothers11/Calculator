@@ -234,3 +234,8 @@ function calculateConversion() {
     }
 }
 
+fromSelect.addEventListener('change', calculateConversion);
+toSelect.addEventListener('change', calculateConversion);
+inputField.addEventListener('input', calculateConversion);
+
+populateUnits();

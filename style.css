@@ -176,7 +176,7 @@ button:hover {
     gap: 10px;
     padding: 0px 20px 15px 20px;
 
-    scrollbar-width: thin;
+    scrollbar-width: none;
     -ms-overflow-style: none;
 }
 
