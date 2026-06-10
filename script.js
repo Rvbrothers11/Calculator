@@ -174,3 +174,63 @@ const conversionData = {
     time: { Seconds: 1, Minutes: 1 / 60, Hours: 1 / 3600, Days: 1 / 86400, Weeks: 1 / 604800, Years: 1 / 31536000 }
 };
 
+categoryButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+        categoryButtons.forEach(buttton => button.classList.remove('active'));
+        e.target.classList.add('active');
+        currentCategory = e.target.getAttribute('data-category');
+        populateUnits();
+    });
+});
+
+function populateUnits() {
+    const units = Object.keys(conversionData[currentCategory]);
+
+    fromSelect.innerHTML = '';
+    toSelect.innerHTML = '';
+
+    units.forEach(unit => {
+        fromSelect.innerHTML += `<option value="${unit}">${unit}</option>`;
+        toSelect.innerHTML += `<option value="${unit}">${unit}</option>`;
+    });
+
+    if(units.length > 1) {
+        toSelect.selectedIndex = 1;
+    }
+
+    calculateConversion();
+}
+
+function calculateConversion() {
+    const from = fromSelect.value;
+    const to = toSelect.value;
+    const val = parseFloat(inputField.value);
+
+    if (isNaN(val)) {
+        outputField.value = "";
+        return;
+    }
+
+    if (currentCategory === 'temperature') {
+        let celsiusVal; 
+
+        if (from === 'Celsius') celsiusVal = val;
+        else if (from === 'Fahrenheit') celsiusVal = (val - 32) * 5/9;
+        else if (from === 'Kelvin') celsiusVal = val - 273.15;
+
+        let result;
+        if (to === 'Celsius') result = celsiusVal;
+        else if (to === 'Fahrenheit') result = (celsiusVal * 9/5) + 32;
+        else if (to === 'Kelvin') result = celsiusVal + 273.15;
+
+        outputField.value = Math.round(result * 10000) / 10000;
+    
+    } else {
+        const baseVal = val / conversionData[currentCategory][from];
+        let result = baseVal * conersionData[currentCategory][to];
+
+        result = parseFloat(result.toFixed(6));
+        outputField.value = result;
+    }
+}
+
