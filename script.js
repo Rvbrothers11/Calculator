@@ -164,5 +164,13 @@ const categoryButtons = document.querySelectorAll('.category-button')
 let currentCategory = 'length';
 
 const conversionData = {
-
+    length: { Meters: 1, Kilometers: 0.001, Centimeters: 100, Millimeters: 1000, Miles: 0.000621371, Yards: 1.09361, Feet: 3.28084, Inches: 39.3701 },
+    temperature: { Celcius: 'special', Fahrenheit: 'special', Kelvin: 'special'},
+    area: {"Sq Meters": 1, "Sq Kilometers": 0.000001, Hectares: 0.0001, Acres: 0.000247105, "Sq Miles": 3.861e-7, "Sq Feet": 10.7639 },
+    volume: { Liters: 1, Milliliters: 1000, "Cubic Meters": 0.001, "US Gallons": 0.264172, "US Quartz": 1.05669, "US Pints": 2.11338, "US Cups": 4.22675, "Fluid Ounces": 33.814 },
+    mass: { Grams: 1, Kilograms: 0.001, Milligrams: 1000, "Metric Tons": 0.000001, Pounds: 0.00220462, Ounces: 0.035274 },
+    data: { Bytes: 1, Kilobytes: 1 / 1024, Megabytes: 1 / 1048576, Gigabytes: 1 / 10737}
+    speed: { "Meters/sec": 1, "Kilometers/hour": 3.6, "Miles/hour": 2.23694, Knots: 1.94384 },
+    time: { Seconds: 1, Minutes: 1 / 60, Hours: 1 / 3600, Days: 1 / 86400, Weeks: 1 / 604800, Years: 1 / 31536000 }
 };
+
