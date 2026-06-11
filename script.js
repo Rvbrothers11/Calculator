@@ -10,6 +10,8 @@ const backspaceButton = document.getElementById("button-backspace");
 const themeToggleBtn = document.getElementById('theme-toggle');
 const sunIcon = document.getElementById('sun-icon');
 const moonIcon = document.getElementById('moon-icon');
+const viewTip = document.getElementById("view-tip");
+const navTip = document.getElementById("nav-tip");
 
 themeToggleBtn.addEventListener('click', () => {
     document.body.classList.toggle('light-mode');
@@ -29,10 +31,12 @@ function showView(viewToShow) {
     viewCalc.classList.remove('active');
     viewHistory.classList.remove('active');
     viewConvertor.classList.remove('active');
+    viewTip.classList.remove('active');
 
     viewCalc.style.display = 'none';
     viewHistory.style.display = 'none';
     viewConvertor.style.display = 'none';
+    viewTip.style.display = 'none';
 
     viewToShow.style.display = 'flex';
     viewToShow.classList.add('active');
@@ -49,17 +53,22 @@ function showView(viewToShow) {
 navCalc.addEventListener('click', (e) => { 
     e.preventDefault(); 
     showView(viewCalc);
-})
+});
 
 navHistory.addEventListener('click', (e) => {
     e.preventDefault();
     showView(viewHistory);
-})
+});
 
 navConvertor.addEventListener('click', (e) => {
     e.preventDefault();
     showView(viewConvertor);
-})
+});
+
+navTip.addEventListener('click', (e) => {
+    e.preventDefault();
+    showView(viewTip);
+});
 
 showView(viewCalc);
 
