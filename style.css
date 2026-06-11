@@ -152,6 +152,7 @@ button:hover {
     padding: 20px;
     color: white;
     gap: 15px;
+    height: 55vh;
 }
 
 #view-convertor select, #view-convertor input {
@@ -175,9 +176,9 @@ button:hover {
     overflow-x: auto;
     gap: 10px;
     padding: 0px 20px 15px 20px;
-
     scrollbar-width: none;
     -ms-overflow-style: none;
+    flex-shrink: 0;
 }
 
 .category-slider::-webkit-scrollbar {
@@ -193,6 +194,7 @@ button:hover {
     white-space: nowrap;
     cursor: pointer;
     border: 1px solid #444;
+    flex-shrink: 0;
 }
 
 .category-btn.active {
