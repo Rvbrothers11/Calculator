@@ -178,7 +178,27 @@ function handleBackspace() {
 backspaceButton.addEventListener('click', (e) => {
     e.preventDefault();
     handleBackspace();
-})
+});
+
+
+document.addEventListener('keydown', (e) => {
+    if (!viewCalc.classList.contains('active')) return;
+    const key= e.key;
+
+    if (key === 'Enter' || key === 'Backspace') {
+        e.preventDefault();
+    }
+
+    if (/[0-9\.\+\-\%\(\)]/.test(key)) {
+        processMath(key);
+    }
+
+    else if (key === '*') {processMath('*');}
+    else if (key === '/') {processMath('/');}
+    else if (key === 'Enter') {processMath('=');}
+    else if (key === 'Escape') {processMath('AC');}
+    else if (key === 'Backscape') {handleBackspace();}
+});
 
 function updateDisplay(value) {
     display.innerText = value || '0';
