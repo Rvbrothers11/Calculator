@@ -297,3 +297,54 @@ toSelect.addEventListener('change', calculateConversion);
 inputField.addEventListener('input', calculateConversion);
 
 populateUnits();
+
+const billInput = document.getElementById('bill-input');
+const tipSlider = document.getElementById('tip-slider');
+const tipPercentDisplay = document.getElementById('tip-percent-display');
+const splitMinus = document.getElementById('split-minus');
+const splitPlus = document.getElementById('split-plus');
+const splitCountDisplay = document.getElementById('split-count');
+const tipAmountDisplay = document.getElementById('tip-amount');
+const totalPerPersonDisplay = document.getElementById('total-per-person');
+
+let splitCount = 1;
+
+function calculateTip() {
+    const bill = parseFloat(billInput.value);
+    const tipPercent = parseInt(tipSlider.value);
+
+    tipPercentDisplay.innerText = tipPercent;
+
+    if (isNaN(bill) || bill <= 0) {
+        tipAmountDisplay.innerText = "$0.00";
+        totalPerPersonDisplay.innerText = "$0.00";
+        return;
+    }
+
+    const totalTip = bill * (tipPercent / 100);
+    const totalBill = bill + totalTip;
+    const tipPerPerson = totalTip / splitCount;
+    const totalPerPerson = totalBill / splitCount;
+
+    tipAmountDisplay.innerText = "$" + tipPerPerson.toFixed(2);
+    totalPerPersonDisplay.innerText = "$" + totalPerPerson.toFixed(2);
+}
+
+splitMinus.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (splitCount > 1) {
+        splitCount--;
+        splitCountDisplay.innerText = splitCount;
+        calculateTip();
+    }
+});
+
+splitPlus.addEventListener('click', (e) => {
+    e.preventDefault();
+    splitCount++;
+    splitCountDisplay.innerText = splitCount;
+    calculateTip();
+});
+
+billInput.addEventListener('input', calculateTip);
+tipSlider.addEventListener('input', calculateTip);
