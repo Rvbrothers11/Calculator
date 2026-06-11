@@ -197,7 +197,7 @@ document.addEventListener('keydown', (e) => {
     else if (key === '/') {processMath('/');}
     else if (key === 'Enter') {processMath('=');}
     else if (key === 'Escape') {processMath('AC');}
-    else if (key === 'Backscape') {handleBackspace();}
+    else if (key === 'Backspace') {handleBackspace();}
 });
 
 function updateDisplay(value) {
