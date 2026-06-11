@@ -271,3 +271,107 @@ button:hover {
     color: white;
     border-color: #ff9500;
 }
+
+.tip-container {
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.tip-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tip-input-group label {
+    color: var(--pill-text);
+    font-size: 1rem;
+}
+
+#bill-input {
+    width: 100%;
+    padding: 15px;
+    background: var(--bg-screen);
+    color: var(--text-main);
+    border: 1px solid var(--border-main);
+    border-radius: 5px;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+#tip-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    background: var(--bg-keys);
+    outline: none;
+}
+
+#tip-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #ff9500;
+    cursor: pointer;
+}
+
+.split-group {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-keys);
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.split-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.split-btn {
+    background: var(--bg-btn);
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.tip-results {
+    margin-top: 10px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-light);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.result-row {
+    display: flex;
+    justify-content: space-between;
+    color: var(--pill-text);
+    font-size: 1.1rem;
+}
+
+.result-value{
+    color: var(--text-main);
+    font-weight: bold;
+}
+
+.result-row.total {
+    font-size: 1.3rem;
+}
+
+.result-row.total .result-value {
+    color: #ff9500
+}
