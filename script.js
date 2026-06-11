@@ -8,6 +8,31 @@ const navHistory = document.getElementById("nav-history");
 const navConvertor = document.getElementById("nav-convertor");
 const backspaceButton = document.getElementById("button-backspace");
 
+
+const themeToggleBtn = document.getElementById('theme-toggle');
+const sunIcon = document.getElementById('sun-icon');
+const moonIcon = document.getElementById('moon-icon');
+
+themeToggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('light-mode');
+
+    if (document.body.classList.contains('light-mode')) {
+        sunIcon.style.display = 'block';
+        moonIcon.style.display = 'none';
+    } else {
+        sunIcon.style.display = 'none';
+        moonIcon.style.display = 'block';
+    }
+});
+
+
+
+
+
+
+
+
+
 navCalc.style.display = 'none';
 
 function showView(viewToShow) {

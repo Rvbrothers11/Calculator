@@ -58,14 +58,6 @@ body.light-mode {
     display: block;
 }
 
-
-
-
-
-
-
-
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -78,11 +70,12 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #121212;
+    background-color: var(--bg-body);
+    transition: background-color 0.3s ease;
 }
 
 .calculator {
-    background-color: #222;
+    background-color: var(--bg-calc);
     border-radius: 10px;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
     width: 350px;
@@ -90,8 +83,8 @@ body {
 }
 
 .calculator-screen {
-    background-color: #333;
-    color: #fff;
+    background-color: var(--bg-screen);
+    color: var(--text-main);
     font-size: 3rem;
     text-align: right;
     padding: 30px 20px;
@@ -103,12 +96,12 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1px;
-    background-color: #444;
+    background-color: var(--bg-keys);
 }
 
 button {
-    background-color: #222;
-    color: #fff;
+    background-color: var(--bg-btn);
+    color: var(--text-main);
     font-size: 1.5rem;
     padding: 20px;
     border: none;
@@ -151,8 +144,9 @@ button:hover {
     display: flex;
     gap: 10px;
     padding: 10px 20px;
-    background-color: #111;
-    border-bottom: 1px solid #333;
+    background-color: var(--nav-bg);
+    border-bottom: 1px solid var(--border-main);
+    transition: background-color 0.3s ease;
 }
 
 .top-nav button {
@@ -189,10 +183,11 @@ button:hover {
 }
 
 .view-header {
-    color: white;
+    color: var(--text-main);
     font-size: 1.5rem;
     padding: 20px;
-    background: #222;
+    background: var(--bg-calc);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #history-list {
@@ -226,12 +221,13 @@ button:hover {
 #view-convertor select, #view-convertor input {
     width: 100%;
     padding: 15px;
-    background: #333;
-    color: white;
-    border: none;
+    background: var(--bg-screen);
+    color: var(--text-main);
+    border: 1px solid var(--border-main);
     border-radius: 5px;
     font-size: 1.2rem;
     margin-bottom: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .equals-text {
@@ -254,15 +250,16 @@ button:hover {
 }
 
 .category-btn {
-    background-color: #333;
-    color: #a5a5a5;
+    background-color: var(--bg-btn);
+    color: var(--pill-text);
     padding: 10px 20px;
     border-radius: 20px;
     font-size: 1rem;
     white-space: nowrap;
     cursor: pointer;
-    border: 1px solid #444;
+    border: 1px solid var(--border-light);
     flex-shrink: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .category-btn.active {
