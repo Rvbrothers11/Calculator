@@ -7,8 +7,6 @@ const navCalc = document.getElementById("nav-calc");
 const navHistory = document.getElementById("nav-history");
 const navConvertor = document.getElementById("nav-convertor");
 const backspaceButton = document.getElementById("button-backspace");
-
-
 const themeToggleBtn = document.getElementById('theme-toggle');
 const sunIcon = document.getElementById('sun-icon');
 const moonIcon = document.getElementById('moon-icon');
@@ -24,14 +22,6 @@ themeToggleBtn.addEventListener('click', () => {
         moonIcon.style.display = 'block';
     }
 });
-
-
-
-
-
-
-
-
 
 navCalc.style.display = 'none';
 
@@ -94,10 +84,7 @@ document.getElementById('clear-history').addEventListener('click', () => {
 
 let equation = '';
 
-calcButtons.forEach(button => {
-    button.addEventListener('click', (e) => {
-        const value = e.target.closest('button').value || e.target.closest('button').innerText;
-
+function processMath(value) {
         switch (value) {
             case 'all-clear':
             case 'AC':
@@ -127,6 +114,7 @@ calcButtons.forEach(button => {
                 break;
 
             case '±':
+            case '+/-':
                 if (equation) {
                     if (equation.startsWith('-')) {
                         equation = equation.substring(1);
@@ -162,12 +150,21 @@ calcButtons.forEach(button => {
                 }   
                 updateDisplay(equation);
                 break;
-        }   
+          
+        }
+}
+
+calcButtons.forEach(button =>{
+    button.addEventListener('click', (e) => {
+        const targetBtn = e.target.closest('button');
+        if (!targetBtn) return;
+        const value = targetBtn.value || targetBtn.innerText;
+
+        processMath(value);
     });
 });
 
-backspaceButton.addEventListener('click', (e) => {
-    e.preventDefault();
+function handleBackspace() {
     if (equation.length > 1) {
         equation = equation.slice(0, -1);
     } else {
@@ -176,7 +173,12 @@ backspaceButton.addEventListener('click', (e) => {
         return;
     }
     updateDisplay(equation);
-});
+}
+    
+backspaceButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    handleBackspace();
+})
 
 function updateDisplay(value) {
     display.innerText = value || '0';
@@ -205,7 +207,7 @@ categoryButtons.forEach(button => {
     button.addEventListener('click', (e) => {
         categoryButtons.forEach(btn => btn.classList.remove('active'));
         button.classList.add('active');
-        currentCategory = e.target.getAttribute('data-category');
+        currentCategory = button.getAttribute('data-category');
         populateUnits();
     });
 });
