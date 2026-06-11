@@ -107,6 +107,42 @@
                 <select id="convertor-to"></select>
             </div>
         </div>
+
+        <div id="view-tip" class="view hidden">
+            <div class="view-header">Tip Calculator</div>
+
+            <div class="tip-container">
+                <div class="tip-input-group">
+                    <label>Bill Amount</label>
+                    <input type="number" id="bill-input" placeholder="0.00">
+                </div>
+
+                <div class="tip-input-group">
+                    <label>Tip % (<span id="tip-percent-display">15</span>%)</label>
+                    <input type="range" id="tip-slider" min="0" max="30" value="15" step="1">
+                </div>
+
+                <div class="tip-input-group split-group">
+                    <label>Split</label>
+                    <div class="split-controls">
+                        <button id="split-minus" class="split-btn">-</button>
+                        <span id="split-count">1</span>
+                        <button id="split-plus" class="split-btn">+</button>
+                    </div>
+                </div>
+
+                <div class="tip-results">
+                    <div class="result-row">
+                        <span>Tip Amount</span>
+                        <span id="tip-amount" class="result-value">$0.00</span>
+                    </div>
+                    <div class="result-row total">
+                        <span>Total (Per Person)</span>
+                        <span id="total-per-person" class="result-value">$0.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
