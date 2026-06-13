@@ -192,6 +192,36 @@ function processMath(value) {
                 updateDisplay(equation);
                 break;
 
+            case 'sin':
+                equation += 'Math.sin(';
+                updateDisplay(equation);
+                break;
+            case 'cos':
+                equation += 'Math.cos(';
+                updateDisplay(equation);
+                break;
+            case 'tan':
+                equation += 'Math.tan(';
+                updateDisplay(equation);
+                break;
+            case 'sqrt':
+                equation += 'Math.sqrt(';
+                updateDisplay(equation);
+                break;
+            case 'pi':
+                equation += 'PI';
+                updateDisplay(equation);
+                break;
+            case 'e':
+                equation += 'Math.E';
+                updateDisplay(equation);
+                break;
+
+            case 'power':
+                equation += 'Math.'
+
+
+
             default:
                 if (equation === '0' && value !== '.') {
                     equation = value;
