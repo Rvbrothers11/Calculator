@@ -7,11 +7,19 @@ const navCalc = document.getElementById("nav-calc");
 const navHistory = document.getElementById("nav-history");
 const navConvertor = document.getElementById("nav-convertor");
 const backspaceButton = document.getElementById("button-backspace");
+
 const themeToggleBtn = document.getElementById('theme-toggle');
 const sunIcon = document.getElementById('sun-icon');
 const moonIcon = document.getElementById('moon-icon');
 const viewTip = document.getElementById("view-tip");
 const navTip = document.getElementById("nav-tip");
+
+const savedTheme = localStorage.getItem('calculator_theme');
+if (savedTheme === 'light') {
+    document.body.classList.add('light-mode');
+    sunIcon.style.display = 'block';
+    moonIcon.style.display = 'none';
+}
 
 themeToggleBtn.addEventListener('click', () => {
     document.body.classList.toggle('light-mode');
@@ -19,9 +27,14 @@ themeToggleBtn.addEventListener('click', () => {
     if (document.body.classList.contains('light-mode')) {
         sunIcon.style.display = 'block';
         moonIcon.style.display = 'none';
+
+        localStorage.setItem('calculator_theme', 'light');
+
     } else {
         sunIcon.style.display = 'none';
         moonIcon.style.display = 'block';
+
+        localStorage.setItem('calculator_theme', 'dark');
     }
 });
 
