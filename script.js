@@ -147,6 +147,9 @@ function processMath(value) {
                         .replace(/÷/g, '/');
                     
                     mathExpression = mathExpression.replace(/%/g, '/100');
+
+                    mathExpression = mathExpression.replace(/\^/g, '**');
+
                     const result = eval(mathExpression);
 
                     addToHistory(equation, result);
