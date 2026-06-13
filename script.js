@@ -88,6 +88,18 @@ showView(viewCalc);
 let historyArray = [];
 const historyList = document.getElementById('history-list');
 
+const savedHistory = localStorage.getItem('calculator_history');
+
+if (savedHistory) {
+    historyArray = JSON.parse(savedHistory);
+
+    historyArray.forEach(entry => {
+        const li = document.createElement('li');
+        li.innerText = entry;
+        historyList.appendChild(li);
+    });
+}
+
 function addToHistory(calcString, result) {
     const prettyString = calcString.replace(/\*/g, 'x').replace(/\//g, '+');
     const entry = `${prettyString} = ${result}`;
@@ -97,11 +109,15 @@ function addToHistory(calcString, result) {
     const li = document.createElement('li');
     li.innerText = entry;
     historyList.prepend(li);
+
+    localStorage.setItem('calculator_history', JSON.stringify(historyArray));
 }
 
 document.getElementById('clear-history').addEventListener('click', () => {
     historyArray = [];
     historyList.innerHTML = '';
+
+    localStorage.removeItem('calculator_history');
 });
 
 let equation = '';
