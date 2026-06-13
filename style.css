@@ -376,3 +376,26 @@ button:hover {
 .result-row.total .result-value {
     color: #ff9500
 }
+
+.sci-key {
+    display: none;
+    background-color: var(--bg-keys);
+    font-size: 1.2rem
+}
+
+.empty-cell {
+    background-color: transparent !important;
+    cursor: default !important;
+}
+
+.calculator.scientific-mode {
+    width: 440px;
+}
+
+.calculator.scientific-mode .calculator-keys {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.calculator.scientific-mode .sci-key {
+    display: block;
+}
