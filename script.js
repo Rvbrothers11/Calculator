@@ -17,6 +17,13 @@ const navTip = document.getElementById("nav-tip");
 const mainCalculator = document.getElementById("main-calculator");
 const navSciToggle = document.getElementById("nav-sci-toggle");
 
+navSciToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    mainCalculator.classList.toggle('scientific-mode');
+
+    showView(viewCalc);
+});
+
 const savedTheme = localStorage.getItem('calculator_theme');
 if (savedTheme === 'light') {
     document.body.classList.add('light-mode');
