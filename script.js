@@ -14,7 +14,7 @@ const moonIcon = document.getElementById('moon-icon');
 const viewTip = document.getElementById("view-tip");
 const navTip = document.getElementById("nav-tip");
 
-const mainCalculator = document.getElementById("main-calculator");
+const mainCalculator = document.querySelector(".calculator");
 const navSciToggle = document.getElementById("nav-sci-toggle");
 
 navSciToggle.addEventListener('click', (e) => {
@@ -188,7 +188,6 @@ function processMath(value) {
                 else {
                     equation += '(';
                 }
-
                 updateDisplay(equation);
                 break;
 
@@ -204,22 +203,24 @@ function processMath(value) {
                 equation += 'Math.tan(';
                 updateDisplay(equation);
                 break;
+
+                
             case 'sqrt':
                 equation += 'Math.sqrt(';
                 updateDisplay(equation);
                 break;
             case 'pi':
-                equation += 'PI';
+                equation += 'Math.PI';
                 updateDisplay(equation);
                 break;
             case 'e':
                 equation += 'Math.E';
                 updateDisplay(equation);
                 break;
-
             case 'power':
-                equation += 'Math.'
-
+                equation += 'Math.^'
+                updateDisplay(equation);
+                break;
 
 
             default:
