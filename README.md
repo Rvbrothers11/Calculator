@@ -22,14 +22,13 @@ It includes four main modes:
 * **Persistent Memory:** Your theme preference and math history are saved directly to your browser, so they are always there when you come back.
 
 **How to Use It**
-Because this is built with pure web technologies, you don't need to install anything to run it!
 
 **To use it locally:**
 1. Clone or download this repository to your computer.
 2. Double-click the `index.html` file to open it in any modern web browser (Chrome, Safari, Firefox, etc.).
 3. Start calculating!
 
-To use the site (link):
+**To use the site (link):**
 https://calculator-mu-brown-78.vercel.app/
 
 **How It Works**
