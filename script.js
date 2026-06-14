@@ -144,29 +144,35 @@ function processMath(value) {
             case '=':
                 try {
                     let mathExpression= equation
+                        .replace(/×/g, "*")
+                        .replace(/÷/g, '/');
                     
-                    mathExpression = mathExpression.replace(/×/g, '*');
-                    mathExpression = mathExpression.replace(/÷/g, '/');
                     mathExpression = mathExpression.replace(/%/g, '/100');
                     mathExpression = mathExpression.replace(/\^/g, '**');
 
                     const pi = Math.PI;
                     const e = Math.E;
 
-                    if (isRadian) {
-                        mathExpression = mathExpression.replace(/sin\(/g, 'Math.sin(');
-                        mathExpression = mathExpression.replace(/cos\(/g, 'Math.cos(');
-                        mathExpression = mathExpression.replace(/tan\(/g, 'Math.tan(');
-                        
-                    } else {
-                        mathExpression = mathExpression.replace(/sin\(([^)]+)/g, 'Math.sin(($1) * Math.PI / 180');
-                        mathExpression = mathExpression.replace(/cos\(([^)]+)/g, 'Math.cos(($1) * Math.PI / 180');
-                        mathExpression = mathExpression.replace(/tan\(([^)]+)/g, 'Math.tan(($1) * Math.PI / 180');
-                    }
+                    const sin = (val) => {
+                        let rad = isRadian ? val : val * (Math.PI / 180);
+                        return parseFloat(Math.sin(rad).toFixed(10));
+                    };
 
-                    mathExpression = mathExpression.replace(/abs\(/g, 'Math.abs(');
-                    mathExpression = mathExpression.replace(/log\(/g, 'Math.log10(');
-                    mathExpression = mathExpression.replace(/sqrt\(/g, 'Math.sqrt(');
+                    const cos = (val) => {
+                        let rad = isRadian ? val : val * (Math.PI / 180);
+                        if (!isRadian && val % 90 === 0 && (val / 90) % 2 !== 0) return 0;
+                        return parseFloat(Math.cos(rad).toFixed(10));
+                    };
+
+                    const tan = (val) => {
+                        if (!isRadian && val % 90 === 0 && (val / 90) % 2 !== 0) throw new Error("Undefined");
+                        let rad = isRadian ? val : val * (Math.PI / 180);
+                        return parseFloat(Math.tan(rad).toFixed(10));
+                    };
+
+                    const sqrt = Math.sqrt;
+                    const abs = Math.abs;
+                    const log = Math.log10;
 
                     const openParentCount = (mathExpression.match(/\(/g) || []).length;
                     const closeParentCount = (mathExpression.match(/\)/g) || []).length;
@@ -177,9 +183,7 @@ function processMath(value) {
                     const result = eval(mathExpression);
 
                     let finalResult = parseFloat(result.toFixed(10));
-
                     addToHistory(equation, finalResult);
-
                     equation = result.toString();
                     updateDisplay(equation);
                 }
