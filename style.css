@@ -177,7 +177,8 @@ button:hover {
 .view {
     display: none;
     flex-direction: column;
-    height: 365px;
+    height: auto;
+    min-height: 365px;
 }
 
 .view.active {

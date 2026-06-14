@@ -144,24 +144,41 @@ function processMath(value) {
             case '=':
                 try {
                     let mathExpression= equation
-                        .replace(/×/g, '*')
-                        .replace(/÷/g, '/');
                     
+                    mathExpression = mathExpression.replace(/×/g, '*');
+                    mathExpression = mathExpression.replace(/÷/g, '/');
                     mathExpression = mathExpression.replace(/%/g, '/100');
                     mathExpression = mathExpression.replace(/\^/g, '**');
 
-                    const sin = (val) => isRadian ? Math.sin(val) : Math.sin(val * (Math.PI / 180));
-                    const cos = (val) => isRadian ? Math.cos(val) : Math.cos(val * (Math.PI / 180));  
-                    const tan = (val) => isRadian ? Math.tan(val) : Math.tan(val * (Math.PI / 180));
-                    const sqrt = Math.sqrt;
-                    const abs = Math.abs;
-                    const log = Math.log10;
                     const pi = Math.PI;
                     const e = Math.E;
 
+                    if (isRadian) {
+                        mathExpression = mathExpression.replace(/sin\(/g, 'Math.sin(');
+                        mathExpression = mathExpression.replace(/cos\(/g, 'Math.cos(');
+                        mathExpression = mathExpression.replace(/tan\(/g, 'Math.tan(');
+                        
+                    } else {
+                        mathExpression = mathExpression.replace(/sin\(([^)]+)/g, 'Math.sin(($1) * Math.PI / 180');
+                        mathExpression = mathExpression.replace(/cos\(([^)]+)/g, 'Math.cos(($1) * Math.PI / 180');
+                        mathExpression = mathExpression.replace(/tan\(([^)]+)/g, 'Math.tan(($1) * Math.PI / 180');
+                    }
+
+                    mathExpression = mathExpression.replace(/abs\(/g, 'Math.abs(');
+                    mathExpression = mathExpression.replace(/log\(/g, 'Math.log10(');
+                    mathExpression = mathExpression.replace(/sqrt\(/g, 'Math.sqrt(');
+
+                    const openParentCount = (mathExpression.match(/\(/g) || []).length;
+                    const closeParentCount = (mathExpression.match(/\)/g) || []).length;
+                    for (let i = 0; i < openParentCount - closeParentCount; i++) {
+                        mathExpression += ')';
+                    }
+
                     const result = eval(mathExpression);
 
-                    addToHistory(equation, result);
+                    let finalResult = parseFloat(result.toFixed(10));
+
+                    addToHistory(equation, finalResult);
 
                     equation = result.toString();
                     updateDisplay(equation);
@@ -200,37 +217,41 @@ function processMath(value) {
                 updateDisplay(equation);
                 break;
 
-            case 'angle':
-            
-            case 'sin':
-                equation += 'Math.sin(';
-                updateDisplay(equation);
+            case 'sin': 
+                equation += 'sin('; 
+                updateDisplay(equation); 
                 break;
-            case 'cos':
-                equation += 'Math.cos(';
-                updateDisplay(equation);
+            case 'cos': 
+                equation += 'cos('; 
+                updateDisplay(equation); 
                 break;
-            case 'tan':
-                equation += 'Math.tan(';
-                updateDisplay(equation);
+            case 'tan': 
+                equation += 'tan('; 
+                updateDisplay(equation); 
                 break;
-
-
-            case 'sqrt':
-                equation += 'Math.sqrt(';
-                updateDisplay(equation);
+            case 'sqrt': 
+                equation += 'sqrt('; 
+                updateDisplay(equation); 
                 break;
-            case 'pi':
-                equation += 'Math.PI';
-                updateDisplay(equation);
+            case 'abs': 
+                equation += 'abs('; 
+                updateDisplay(equation); 
                 break;
-            case 'e':
-                equation += 'Math.E';
-                updateDisplay(equation);
+            case 'log': 
+                equation += 'log('; 
+                updateDisplay(equation); 
                 break;
-            case 'power':
-                equation += 'Math.^'
-                updateDisplay(equation);
+            case 'pi': 
+                equation += 'pi'; 
+                updateDisplay(equation); 
+                break;
+            case 'e': 
+                equation += 'e'; 
+                updateDisplay(equation); 
+                break;
+            case 'power': 
+                equation += '^'; 
+                updateDisplay(equation); 
                 break;
 
 
@@ -252,6 +273,12 @@ calcButtons.forEach(button =>{
         const targetBtn = e.target.closest('button');
         if (!targetBtn) return;
         const value = targetBtn.value || targetBtn.innerText;
+
+        if (value === 'angle' || targetBtn.id === 'angle-toggle-btn') {
+            isRadian = !isRadian;
+            targetBtn.innerText = isRadian ? 'RAD' : 'DEG';
+            return;
+        }
 
         processMath(value);
     });
