@@ -131,6 +131,7 @@ document.getElementById('clear-history').addEventListener('click', () => {
 });
 
 let equation = '';
+let isRadian = false;
 
 function processMath(value) {
         switch (value) {
@@ -147,8 +148,16 @@ function processMath(value) {
                         .replace(/÷/g, '/');
                     
                     mathExpression = mathExpression.replace(/%/g, '/100');
-
                     mathExpression = mathExpression.replace(/\^/g, '**');
+
+                    const sin = (val) => isRadian ? Math.sin(val) : Math.sin(val * (Math.PI / 180));
+                    const cos = (val) => isRadian ? Math.cos(val) : Math.cos(val * (Math.PI / 180));  
+                    const tan = (val) => isRadian ? Math.tan(val) : Math.tan(val * (Math.PI / 180));
+                    const sqrt = Math.sqrt;
+                    const abs = Math.abs;
+                    const log = Math.log10;
+                    const pi = Math.PI;
+                    const e = Math.E;
 
                     const result = eval(mathExpression);
 
@@ -191,6 +200,8 @@ function processMath(value) {
                 updateDisplay(equation);
                 break;
 
+            case 'angle':
+            
             case 'sin':
                 equation += 'Math.sin(';
                 updateDisplay(equation);
@@ -204,7 +215,7 @@ function processMath(value) {
                 updateDisplay(equation);
                 break;
 
-                
+
             case 'sqrt':
                 equation += 'Math.sqrt(';
                 updateDisplay(equation);
