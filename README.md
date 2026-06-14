@@ -21,7 +21,7 @@ It includes four main modes:
 * **Dark & Light Mode:** Toggle between themes for day or night use.
 * **Persistent Memory:** Your theme preference and math history are saved directly to your browser, so they are always there when you come back.
 
-## How to Use It
+**How to Use It**
 Because this is built with pure web technologies, you don't need to install anything to run it!
 
 **To use it locally:**
@@ -32,7 +32,7 @@ Because this is built with pure web technologies, you don't need to install anyt
 To use the site (link):
 https://calculator-mu-brown-78.vercel.app/
 
-## How It Works
+**How It Works**
 This project is built from scratch using the core languages of the web:
 * **HTML:** Structures the different views (Calculator, History, Convertor, Tip).
 * **CSS:** Uses **CSS Grid** to create a flawless, responsive button layout. The Grid dynamically adapts from 4 columns to 5 columns when switching into Scientific Mode.
